@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Corona Map</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body id="body">
+    <div class="row">	
+        <div class="col-sm-9 map">
+              <div id="map-two">
+                <div class="map_internal">
+                  <iframe class="embed-responsive-item" id="map-two-container" src="whereislockdown.html"   allowfullscreen></iframe>
+                </div>
+              </div>
+              <!--lockdown file-->
+              <div id="map-three">
+                <div class="map_internal">
+                  <iframe class="embed-responsive-item" id="map-three-container" src="who_corona.html"   allowfullscreen></iframe>
+                </div>
+              </div>
+              <!--corona case file-->
+        </div>
+        <!--End of Map-->
+        <div class="col-sm-3">
+           		 <form >
+                  <div class="p-2 mt-4">
+                    <h3 class="text-center font-weight-bold" >
+                      <img src="favicon.webp" alt="">
+                      Corona Info</h3>
+                  </div>
+                  <!-- <br> -->
+                <div class="mt-2">
+                  <h5 class="text-center font-weight-bold">Total Corona Cases</h5>
+                  <h5 class="text-center">145483</h5>
+                </div>
+                <div>
+                  <h5 class="text-center font-weight-bold">Total Deaths</h5>
+                  <h5 class="text-center">1847</h5>
+                </div>
+                <div>
+                  <h5 class="text-center font-weight-bold">Total Recovered</h5>
+                  <h5 class="text-center">59624</h5>
+                </div>
+                  <br>
+                  <!--Table End-->
+                  <div class="font-weight-bold text-center">
+                    <div class="form-check-inline">
+                      <label class="form-check-label" for="radio1">
+                        <input type="radio" class="form-check-input" id="radio1" name="optradio" id="coronaCases" onclick="coronaCase()" checked>
+                        Corona Cases
+                      </label>
+                    </div>
+                    <div class="form-check-inline">
+                      <label class="form-check-label" for="radio2">
+                        <input type="radio" class="form-check-input" id="radio2" name="optradio" id="checkLockdown" onclick="lockDown()">
+                        Lockdown Area
+                      </label>
+                    </div>
+                  </div>
+                  <!--Radio btn End-->
+                  <table>
+                    <tr>
+                        <th>
+                            <p class="corona_color mr-3 mt-3">
+                            </p>
+                        </th>
+                        <th>Corona Cases</th>
+                    </tr>
+                    <tr>
+                      <th>
+                          <p class="lockdown_color mt-3">
+                          </p>
+                      </th>
+                      <th>Lockdown Area</th>
+                  </tr>
+                </table>
+                <div class="text-center mt-3 mb-4">
+                  <button type ='button' id="form_button" onclick="Report()" class="btn btn-dark w-100">Report Lockdown</button>
+                </div>
+                <h4 class="text-center font-weight-bold">Source</h4>
+                <div class="text-center" style="font-size: 20px;">
+                  <i class="fa fa-angle-right"> <strong style="color: #1e4042;">corona.gov.bd</strong> </i>
+                </div>
+                <h5 class="text-center mt-3 font-weight-bold">Last update</h5>
+                <div class="text-center text-uppercase" style="color: #1e4042;">
+                  <strong id="week"></strong>,<strong id="month" ></strong> <strong id="date"></strong>,<strong id="year"></strong>
+                </div>
+            </form>
+          
+        </div>
+      </div>
+    <script>
+
+      //document.getElementById("map-two-container").style.height = "95vh";
+     // document.getElementById("map-three-container").style.height = "95vh";
+       document.getElementById("map-two-container").style.width = "100%";
+      document.getElementById("map-three-container").style.width = "100%";
+
+
+      function Report () {
+        window.open("https://docs.google.com/forms/d/e/1FAIpQLSdmb0pcUPLlUyR7ZpAjueVTaGnskz3EOkRaIgAKTSYanIv3xQ/viewform");
+      }
+
+    let map_two = document.getElementById('map-two');
+    let map_three = document.getElementById('map-three');
+
+
+    map_two.style.display = 'none';
+    map_three.style.display = 'block';
+    
+
+    function lockDown() {
+      map_two.style.display = 'block';
+      map_three.style.display = 'none';
+    }
+
+    function coronaCase () {
+      map_two.style.display = 'none';
+      map_three.style.display = 'block';
+    }
+    
+    var week = new Date();
+    var days = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
+    document.getElementById("week").innerHTML = days[week.getDay()];
+
+
+    var month = new Date();
+    var months = ["January","February","March","April","May","June","July","August","September","October","November","December"];
+    document.getElementById("month").innerHTML = months[month.getMonth()];
+
+   var date = new Date();
+   document.getElementById("date").innerHTML = date.getDate();
+
+   var year = new Date();
+   document.getElementById("year").innerHTML = year.getFullYear();
+
+    </script>
+</body>
+</html>

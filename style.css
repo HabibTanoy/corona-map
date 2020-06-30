@@ -1,0 +1,52 @@
+.map {
+    width: 80%;
+    padding: 0px;
+}
+
+.map_internal {
+    height: 700px;
+}
+
+.corona_color {
+    background-color: rgb(218, 0, 0);
+    width: 30px;
+    height: 14px;
+}
+
+.lockdown_color {
+    background-color: rgb(255, 100, 100); 
+    width: 30px; 
+    height: 14px;
+}
+
+
+.sub_modify {
+    padding-bottom: 16px;
+}
+
+ @media (max-width: 575px) {
+    .map {
+        width: 100%;
+        height: 50vh;
+    }
+    #map-two-container{
+        height: 50vh;
+    }
+    #map-three-container{
+        height: 50vh;
+    }
+    
+}
+@media (min-width: 575px) {
+    
+    #map-two-container{
+        height: 100vh;
+    }
+    #map-three-container{
+        height: 100vh;
+    }
+    
+}
+
+
+
